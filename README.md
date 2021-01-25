@@ -12,7 +12,10 @@ Using Highcharts with Angular comes with a few tradeoffs. The most difficult one
 ## Setting up a dynamic tooltip
 
 After creating your custom tooltip component, you can use the `ComponentFactory` class example to return a dynamically injected component. This symbol can then be passed through to the Highcharts formatter callback by using your new components `nativeElement.outerHTML` property. This allows you to fully control the template and styling of your tooltip instead of defining it using the Highcharts tooltip formatter API and string interpolation. You can also bind the point data that is currently hovered over, and pass that to a data attribute on your custom tooltip component.
+
 [Implementation example](https://github.com/areknow/angular-highcharts-tooltip/blob/master/src/app/chart/chart.component.ts#L58).
+
+[Custom tooltip example](https://github.com/areknow/angular-highcharts-tooltip/blob/master/src/app/tooltip/tooltip.component.html).
 
 ## Starting the demo
 
