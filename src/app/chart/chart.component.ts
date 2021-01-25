@@ -36,7 +36,7 @@ export class ChartComponent implements OnInit {
         type: 'line',
       },
       title: {
-        text: 'Monthly Average Temperature',
+        text: 'Dynamic Tooltip Example',
       },
       xAxis: {
         categories: CATEGORIES,
