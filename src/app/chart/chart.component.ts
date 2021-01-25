@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Compiler, Component, Injector, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts';
+import { ComponentFactoryClass } from '../factory';
+import { TooltipComponent } from '../tooltip/tooltip.component';
+import { TooltipModule } from '../tooltip/tooltip.module';
+import { CATEGORIES, SERIES } from './constants';
 
 @Component({
   selector: 'app-chart',
@@ -7,8 +11,57 @@ import * as Highcharts from 'highcharts';
   styleUrls: ['./chart.component.scss'],
 })
 export class ChartComponent implements OnInit {
+  constructor(private injector: Injector, private compiler: Compiler) {}
+
   ngOnInit(): void {
-    console.log(Highcharts);
-    Highcharts.chart('chart-container', {});
+    Highcharts.chart('chart-container', this.prepareChart());
+  }
+
+  prepareChart(): Highcharts.Options {
+    // Dynamically create and inject the tooltip
+    const component = new ComponentFactoryClass<
+      TooltipModule,
+      TooltipComponent
+    >(this.injector, this.compiler).createComponent(
+      TooltipModule,
+      TooltipComponent
+    );
+
+    // Build options
+    return {
+      credits: {
+        enabled: false,
+      },
+      chart: {
+        type: 'line',
+      },
+      title: {
+        text: 'Monthly Average Temperature',
+      },
+      xAxis: {
+        categories: CATEGORIES,
+      },
+      yAxis: {
+        title: {
+          text: 'Temperature (°C)',
+        },
+      },
+      tooltip: {
+        useHTML: true,
+        backgroundColor: 'transparent',
+        borderWidth: 0,
+        borderRadius: 0,
+        shadow: false,
+        shape: 'square',
+        padding: 0,
+        formatter(): string {
+          // Pass the tooltip data to the dynamic tooltip component
+          component.instance.data = this;
+          component.changeDetectorRef.detectChanges();
+          return component.location.nativeElement.outerHTML;
+        },
+      },
+      series: SERIES as Highcharts.SeriesOptionsType[],
+    };
   }
 }
