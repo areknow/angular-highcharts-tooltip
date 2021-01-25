@@ -53,11 +53,13 @@ export class ChartComponent implements OnInit {
         borderRadius: 0,
         shadow: false,
         shape: 'square',
+        outside: true,
         padding: 0,
         formatter(): string {
           // Pass the tooltip data to the dynamic tooltip component
           component.instance.data = this;
           component.changeDetectorRef.detectChanges();
+          // Return the tooltip html to highcharts
           return component.location.nativeElement.outerHTML;
         },
       },
