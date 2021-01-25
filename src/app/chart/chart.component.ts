@@ -56,7 +56,7 @@ export class ChartComponent implements OnInit {
         outside: true,
         padding: 0,
         formatter(): string {
-          // Pass the tooltip data to the dynamic tooltip component
+          // Pass the point data to the dynamic tooltip component
           component.instance.data = this;
           component.changeDetectorRef.detectChanges();
           // Return the tooltip html to highcharts
