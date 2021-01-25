@@ -1,6 +1,6 @@
 # Angular Highcharts Tooltip
 
-## Problem with Angular Highcharts and tooltips
+## Problem with Highcharts tooltips in Angular
 
 Original motivation for this project: https://www.highcharts.com/forum/viewtopic.php?t=34906
 
