@@ -2,6 +2,8 @@
 
 ## Problem with Angular Highcharts and tooltips
 
+Original motivation for this project: https://www.highcharts.com/forum/viewtopic.php?t=34906
+
 Using Highcharts with Angular comes with a few tradeoffs. The most difficult one that I have come across has been the lack of dynamic component support in the highcharts tooltip formatter. This repository shows you how to easily create a dynamic tooltip component with real chart data and inject it into the Highcharts view.
 [Live example](https://angular-highcharts-tooltip.netlify.app/).
 
