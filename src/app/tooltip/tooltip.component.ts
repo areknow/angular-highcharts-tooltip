@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import * as Highcharts from 'highcharts';
 
 @Component({
   selector: 'app-tooltip',
@@ -6,5 +7,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./tooltip.component.scss'],
 })
 export class TooltipComponent {
-  @Input() data: any;
+  @Input() data!: Highcharts.TooltipFormatterContextObject;
 }

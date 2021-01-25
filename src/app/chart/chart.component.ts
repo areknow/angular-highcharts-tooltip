@@ -1,6 +1,6 @@
 import { Compiler, Component, Injector, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts';
-import { ComponentFactoryClass } from '../factory';
+import { ComponentFactoryClass } from '../shared/utils/component-factory';
 import { TooltipComponent } from '../tooltip/tooltip.component';
 import { TooltipModule } from '../tooltip/tooltip.module';
 import { CATEGORIES, SERIES } from './constants';
